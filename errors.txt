@@ -1,0 +1,24 @@
+ast.c:41:6: error: conflicting types for ‘ast_node_add_child’
+ void ast_node_add_child(struct ast_node* parent, struct ast_node* child)
+      ^
+In file included from ast.c:1:0:
+ast.h:10:6: note: previous declaration of ‘ast_node_add_child’ was here
+ void ast_node_add_child(struct ast_node* child);
+      ^
+ast.c: In function ‘ast_node_add_child’:
+ast.c:53:9: error: too few arguments to function ‘ast_node_double_child_capacity’
+         ast_node_double_child_capacity(parent);
+         ^
+In file included from ast.c:1:0:
+ast.h:12:13: note: declared here
+ static void ast_node_double_child_capacity(struct ast_node* parent, struct ast_node* node);
+             ^
+ast.c: At top level:
+ast.c:62:6: error: conflicting types for ‘ast_node_double_child_capacity’
+ void ast_node_double_child_capacity(struct ast_node* node)
+      ^
+In file included from ast.c:1:0:
+ast.h:12:13: note: previous declaration of ‘ast_node_double_child_capacity’ was here
+ static void ast_node_double_child_capacity(struct ast_node* parent, struct ast_node* node);
+             ^
+ast.h:12:13: warning: ‘ast_node_double_child_capacity’ used but never defined
