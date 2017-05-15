@@ -15,6 +15,6 @@ struct variable
 };
 
 struct variable* var_create(var_type type, void* data);
-void var_assign(struct variable* destination, struct variable* source);
+void var_assign(struct variable* destination, const struct variable* source);
 
 #endif
