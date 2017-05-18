@@ -3,18 +3,15 @@
 
 #include "ast.h"
 #include "var.h"
+#include "builtin_functions.h"
 
-struct function_table
+struct function_table_t
 {
-    struct ast_node** nodes;
-    int node_count;
-    int node_capacity;
-};
+    char** names = {"input", "print", "+"};
+    void** functions = {&input, &print, &math_plus};
+    int count = 3;
+} function_table;
 
-struct function_table* function_table_create();
-void function_table_add(struct ast_node* new_function);
-void function_table_destroy(struct function_table* table);
-
-int run(struct function_table* table, const char* function_name, struct variable* output);
+void run(struct ast_node* node, struct variable* output);
 
 #endif
