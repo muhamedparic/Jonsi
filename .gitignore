@@ -1,11 +1,11 @@
 -# Object files
- -*.o
+ *.o
  -*.ko
  -*.obj
  -*.elf
  -
  -# Precompiled Headers
- -*.gch
+ *.gch
  -*.pch
  -
  -# Libraries
@@ -21,8 +21,8 @@
  -*.dylib
  -
  -# Executables
- -*.exe
- -*.out
+ *.exe
+ *.out
  -*.app
  -*.i*86
  -*.x86_64
