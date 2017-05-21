@@ -11,7 +11,8 @@ struct ast_node* ast_node_create(const char* name)
     product->child_count = 0;
     product->child_capacity = 0;
     product->children = NULL;
-    product->name = strdup(name);
+    product->name = malloc(sizeof(char) * strlen(name));
+    strcpy(product->name, name);
 
     return product;
 }

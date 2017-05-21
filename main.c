@@ -1,4 +1,6 @@
-#include "parser.h"
+#include "core/parser.h"
+#include "essentials/function_run.h"
+#include "essentials/var.h"
 
 #include <stdio.h>
 
@@ -17,6 +19,7 @@ void debug_print(struct ast_node* node)
 
 int main()
 {
-    struct ast_node* root = ast_create("( program ( var a ) ( var b ) ( = a ( input ) ) ( = b ( input ) ) ( print ( + a b ) ) )");
-    debug_print(root);
+    struct ast_node* root = ast_create("( print ( + 1 ( input ) ) )");
+    //debug_print(root);
+    run(root, NULL);
 }

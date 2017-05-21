@@ -4,13 +4,6 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-void assert(int condition, const char* message)
-{
-    if (!condition)
-    {
-        printf("%s", message);
-        exit(1);
-    }
-}
+void assert(int condition, const char* message);
 
 #endif

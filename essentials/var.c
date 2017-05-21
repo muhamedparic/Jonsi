@@ -1,10 +1,12 @@
 #include "var.h"
 
 #include <stdio.h>
+#include <stdlib.h>
 
-struct variable* var_create(var_type type, void* data)
+struct variable* var_create(enum var_type type, void* data)
 {
-    struct variable* product = {.type = var_type, .data = data};
+    struct variable* product = malloc(sizeof(struct variable));
+    *product = (struct variable){.type = type, .data = data};
     return product;
 }
 

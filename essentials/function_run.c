@@ -1,5 +1,6 @@
+#include "function_run.h"
 #include "function.h"
-#include "error.h"
+#include "../core/error.h"
 
 #include <string.h>
 #include <stdlib.h>
@@ -11,11 +12,11 @@ void run(struct ast_node* node, struct variable* output)
 
     if (node->is_call)
     {
-        for (i = 0; i < function_table.count; i++)
+        for (i = 0; i < FUNCTION_COUNT; i++)
         {
             if (!strcmp(node->name, function_table.names[i]))
             {
-                (*function_table.functions[i])(node, output);
+                ((builtin_function*)function_table.functions[i])(node, output);
                 return;
             }
         }
@@ -29,27 +30,27 @@ void run(struct ast_node* node, struct variable* output)
             output->type = BOOL;
             data = malloc(sizeof(int));
             *((int*)data) = 1;
-            node->data = data;
+            output->data = data;
         }
         else if (!strcmp(node->name, "false"))
         {
             output->type = BOOL;
             data = malloc(sizeof(int));
             *((int*)data) = 0;
-            node->data = data;
+            output->data = data;
         }
         else if (!strcmp(node->name, "null"))
         {
             output->type = NULL_T;
             data = NULL;
-            node->data = data;
+            output->data = data;
         }
         else
         {
             output->type = INT;
             data = malloc(sizeof(int));
             *((int*)data) = atoi(node->name);
-            node->data = data;
+            output->data = data;
         }
     }
 }
